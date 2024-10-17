@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sporting Goods Forecaster</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script>
+        // Function to update the label for slider values
+        function updateLabel(sliderId, labelId) {
+            var slider = document.getElementById(sliderId);
+            var label = document.getElementById(labelId);
+            label.innerHTML = slider.value;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Sporting Goods Forecaster</h1>
+        <p>A model to predict the ordered quantity of a certain type of sports goods.</p>
+
+        <!-- Start of form -->
+        <form method="post" action="/">
+            <div class="row">
+                <div class="col">
+                    <h2>Product Details</h2>
+                    
+                    <!-- Product Group Dropdown -->
+                    <label for="product_category">Product Group</label>
+                    <select id="product_category" name="product_category">
+                        <option value="Assorted Sports Articles">Assorted Sports Articles</option>
+                        <option value="Children Sports">Children Sports</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Golf">Golf</option>
+                        <option value="Indoor Sports">Indoor Sports</option>
+                        <option value="Outdoors">Outdoors</option>
+                        <option value="Racket Sports">Racket Sports</option>
+                        <option value="Running - Jogging">Running - Jogging</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Swim Sports">Swim Sports</option>
+                        <option value="Team Sports">Team Sports</option>
+                        <option value="Winter Sports">Winter Sports</option>
+                        
+                        
+                    </select>
+
+                    <!-- Cost Price Per Unit Slider -->
+                    <label for="cpu">Cost Price Per Unit: <span id="cpuLabel"><$25</span></label>
+                    <input type="range" id="cpu" name="cpu" min="1" max="5" value="1" oninput="updateCpuLabel()">
+                    
+                    <script>
+                        // Function to update the label based on the slider value for cost price per unit
+                        function updateCpuLabel() {
+                            var cpu = document.getElementById('cpu').value;
+                            var cpuLabel = document.getElementById('cpuLabel');
+                            
+                            if (cpu == 1) {
+                                cpuLabel.innerHTML = '<$25';
+                            } else if (cpu == 2) {
+                                cpuLabel.innerHTML = '>= $25 and <$50';
+                            } else if (cpu == 3) {
+                                cpuLabel.innerHTML = '>= $50 and <$100';
+                            } else if (cpu == 4) {
+                                cpuLabel.innerHTML = '>= $100 and <$200';
+                            } else if (cpu == 5) {
+                                cpuLabel.innerHTML = '>= $200';
+                            }
+                        }
+                    </script>
+                    
+
+                    <!-- Item Retail Value Slider -->
+                    <label for="irv">Item Retail Value: <span id="irvLabel"><$50</span></label>
+                    <input type="range" id="irv" name="irv" min="1" max="5" value="1" oninput="updateIrvLabel()">
+                    
+                    <script>
+                        // Function to update the label based on the slider value for item retail value
+                        function updateIrvLabel() {
+                            var irv = document.getElementById('irv').value;
+                            var irvLabel = document.getElementById('irvLabel');
+                            
+                            if (irv == 1) {
+                                irvLabel.innerHTML = '<$50';
+                            } else if (irv == 2) {
+                                irvLabel.innerHTML = '>= $50 and <$100';
+                            } else if (irv == 3) {
+                                irvLabel.innerHTML = '>= $100 and <$200';
+                            } else if (irv == 4) {
+                                irvLabel.innerHTML = '>= $200 and <$400';
+                            } else if (irv == 5) {
+                                irvLabel.innerHTML = '>= $400';
+                            }
+                        }
+                    </script>
+                    
+                </div>
+
+                <div class="col">
+                    <h2>Time</h2>
+                    <!-- Year Slider -->
+                    <label for="date_year">Year: <span id="yearLabel">2017</span></label>
+                    <input type="range" id="date_year" name="date_year" min="2017" max="2030" value="2017" oninput="updateLabel('date_year', 'yearLabel')">
+
+                    <!-- Month Slider -->
+                    <label for="date_month">Month: <span id="monthLabel">1</span></label>
+                    <input type="range" id="date_month" name="date_month" min="1" max="12" value="1" oninput="updateLabel('date_month', 'monthLabel')">
+                </div>
+            </div>
+
+            <button type="submit">Predict Order Quantity</button>
+        </form>
+        <!-- End of form -->
+
+        {% if prediction %}
+            <h3>Predicted Order Quantity: {{ prediction }}</h3>
+            <h4>Product Category: {{ pc_out }}</h4>
+            <h4>Year: {{ yr_out }} Month: {{ mon_out }}</h4>
+            <h4>Cost Price Group: {{ cpu_out }}</h4>
+            <h4>Item Retail Value Group: {{ irv_out }}</h4>
+        {% endif %}
+    </div>
+</body>
+</html>
