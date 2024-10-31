@@ -8,8 +8,10 @@ Running a Flask application:
 
 **On Linux/macOS:**
 ```export FLASK_APP=app.py```
+
 **On Windows (Command Prompt):**
 ```set FLASK_APP=app.py```
+
 **On Windows (PowerShell):**
 ```$env:FLASK_APP = "app.py"```
 
