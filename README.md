@@ -1,7 +1,25 @@
-Running a Flask application:
+# Goal
+Predicting number of sales for different sports category in the following years.
 
-1. Navigate to your project directory (the folder where your app.py is located):
+# Data
+This package used the online sporting goods dataset from [Kaggle](https://www.kaggle.com/datasets/gabrielsantello/wholesale-and-retail-orders-dataset).
 
+# Setting-up Virtual Environment (venv)
+```
+virtualenv --python=python3 venv
+# Mac
+source venv/bin/activate
+# Windows
+# source venv/Scripts/activate 
+
+pip freeze # show what's been installed
+pip install -r requirements.txt
+
+```
+
+# Running a Flask Application:
+
+1. Navigate to your project directory (the folder where your app.py is located): 
 ```cd /path/to/your/project```
 
 2. Set the FLASK_APP environment variable (if necessary):
