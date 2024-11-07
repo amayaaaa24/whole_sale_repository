@@ -4,10 +4,18 @@ Predicting number of sales for different sports category in the following years.
 # Data
 This package used the online sporting goods dataset from [Kaggle](https://www.kaggle.com/datasets/gabrielsantello/wholesale-and-retail-orders-dataset).
 
+# Clone The Repository
+```
+git clone https://github.com/amayaaaa24/whole_sale_repository.git
+
+```
+
 # Setting-up Virtual Environment (venv)
 ```
+cd whole_sale_repository
+# pip install virtualenv
 virtualenv --python=python3 venv
-# Mac
+# Mac or Linux
 source venv/bin/activate
 # Windows
 # source venv/Scripts/activate 
