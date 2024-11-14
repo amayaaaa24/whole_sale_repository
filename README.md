@@ -14,7 +14,7 @@ git clone https://github.com/amayaaaa24/whole_sale_repository.git
 ```
 cd whole_sale_repository
 # pip install virtualenv
-virtualenv --python=python3.8.8 venv
+virtualenv --python=python3 venv
 # Mac or Linux
 source venv/bin/activate
 # Windows
